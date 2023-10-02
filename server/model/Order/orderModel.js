@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const orderStatusEnum = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
+
 const orderSchema = new mongoose.Schema({
     totalPrice: {
         type: Number, 
@@ -22,9 +24,12 @@ const orderSchema = new mongoose.Schema({
         require: true,
     },
     status: {
-        type: String, 
-        require: true,
+        type: String,
+        enum: orderStatusEnum,
+        default: 'Pending',
     }
+}, {
+    timestamps: true
 })
 
 export const Order = mongoose.model('Order', orderSchema);
