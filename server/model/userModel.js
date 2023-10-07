@@ -1,5 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
+const userEnum = ['admin', 'staff', 'customer'];
+
 const userSchema = new mongoose.Schema ({
     name: {
         type: String, 
@@ -29,11 +31,12 @@ const userSchema = new mongoose.Schema ({
     },
     role: {
         type: String,
-        required: true,
+        enum: userEnum,
+        default: 'customer',
     },
     phone: {
         type: String,
-        require: true
+        require: true,
     }
 }, {
     timestamps: true

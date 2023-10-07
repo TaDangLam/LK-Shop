@@ -3,8 +3,12 @@ import mongoose from "mongoose";
 const orderStatusEnum = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
 const orderSchema = new mongoose.Schema({
+    userID: {
+        type: mongoose.Types.ObjectId,
+        ref: '',
+    },
     totalPrice: {
-        type: Number, 
+        type: String, 
         require: true,
     },
     createDate: {

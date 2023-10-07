@@ -5,15 +5,11 @@ const productSchema = new mongoose.Schema({
         type: String, 
         require: true,
     },
-    avatar: {
-        type: String, 
+    description: {
+        type: String,
         require: true,
     },
     price: {
-        type: Number, 
-        require: true,
-    },
-    description: {
         type: String, 
         require: true,
     },
@@ -21,9 +17,13 @@ const productSchema = new mongoose.Schema({
         type: Number, 
         require: true,
     },
-    category: {
-        type: String, 
-        require: true,
+    categories: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Category',
+    },
+    productImg: {
+        type: mongoose.Types.ObjectId,
+        ref: 'ProductImage',
     }
 }, {
     timestamps: true
