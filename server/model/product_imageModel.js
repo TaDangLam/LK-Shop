@@ -14,4 +14,3 @@ const productImgSchema = new mongoose.Schema({
 })
 
 export const ProductImage = mongoose.model('ProductImage', productImgSchema);
-

@@ -5,21 +5,20 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 
 import MongoConnect from './lib/mongodb.js';
+import { API_Product } from './routes/productRoute.js';
+
 
 dotenv.config()
 const PORT = process.env.PORT || 4000;
 
-// Access database
+// Database Connection
 MongoConnect();
 
+// Middleware
 app.use(cors());    
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send({ message: 'test1' });
-});
+//Router
+app.use('/api/product', API_Product),
 
-app.get('/api', (req, res) => {
-    res.json({ message: 'cái con cặc', message1: 'Cái Lồn' });
-});
-
-app.listen(PORT, () => console.log(`Server is running on PORT: ${PORT}`));
+app.listen(PORT, () => console.log(`Server listening http://localhost:${PORT}`));

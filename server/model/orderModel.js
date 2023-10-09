@@ -31,10 +31,19 @@ const orderSchema = new mongoose.Schema({
         type: String,
         enum: orderStatusEnum,
         default: 'Pending',
-    }
+    },
+    items: [
+        {
+            product: {type: mongoose.Types.ObjectId, ref: 'Product'},
+            amount: {type: Number, require: true, min: 1}, 
+        }
+    ],
+    paymentID: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Payment',
+    },
 }, {
     timestamps: true
 })
 
 export const Order = mongoose.model('Order', orderSchema);
-

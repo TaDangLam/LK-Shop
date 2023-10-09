@@ -21,13 +21,15 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Category',
     },
-    productImg: {
-        type: mongoose.Types.ObjectId,
-        ref: 'ProductImage',
-    }
+    productImg: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'ProductImage',
+        }
+    ],
+        
 }, {
     timestamps: true
 })
 
 export const Product = mongoose.model('Product', productSchema);
-
