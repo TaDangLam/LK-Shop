@@ -1,31 +1,29 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
     name: {
         type: String, 
-        require: true,
+        required: true,
     },
     description: {
         type: String,
-        require: true,
+        required: true,
     },
     price: {
         type: String, 
-        require: true,
+        required: true,
     },
     amount: {
         type: Number, 
-        require: true,
+        required: true,
     },
     categories: {
         type: mongoose.Types.ObjectId,
         ref: 'Category',
     },
-    productImg: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'ProductImage',
-        }
+    images: [
+        {type: String},
     ],
         
 }, {

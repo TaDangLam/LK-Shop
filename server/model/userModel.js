@@ -5,7 +5,7 @@ const userEnum = ['admin', 'staff', 'customer'];
 const userSchema = new mongoose.Schema ({
     name: {
         type: String, 
-        require: true,
+        required: true,
         minlength: 10,
         maxlength: 20,
     },
@@ -16,11 +16,11 @@ const userSchema = new mongoose.Schema ({
     },
     birth: {
         type: Date,
-        require: false,
+        required: false,
     },
     username: {
         type: String,
-        require: true,
+        required: true,
         minlength: 10,
         maxlength: 20,
     },
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema ({
     },
     phone: {
         type: String,
-        require: true,
+        required: true,
     }
 }, {
     timestamps: true

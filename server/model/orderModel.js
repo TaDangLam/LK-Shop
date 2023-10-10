@@ -5,27 +5,27 @@ const orderStatusEnum = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cance
 const orderSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Types.ObjectId,
-        ref: '',
+        ref: 'User',
     },
     totalPrice: {
         type: String, 
-        require: true,
+        required: true,
     },
     createDate: {
         type: Date, 
-        require: true,
+        required: true,
     },
     discount: {
         type: String, 
-        require: true,
+        required: true,
     },
     itemTotalPrice: {
         type: Number, 
-        require: true,
+        required: true,
     },
     shippingFee: {
         type: Number, 
-        require: true,
+        required: true,
     },
     status: {
         type: String,

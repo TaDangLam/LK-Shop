@@ -2,7 +2,6 @@ import express from 'express';
 const app = express();
 import cors from 'cors';
 import dotenv from 'dotenv'
-import mongoose from 'mongoose';
 
 import MongoConnect from './lib/mongodb.js';
 import { API_Product } from './routes/productRoute.js';
@@ -16,7 +15,7 @@ MongoConnect();
 
 // Middleware
 app.use(cors());    
-app.use(express.json());
+app.use(express.json())
 
 //Router
 app.use('/api/product', API_Product),
