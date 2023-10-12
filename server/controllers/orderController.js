@@ -12,6 +12,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+    // GET ALL Shipped Order
     getAllShippedOrder: async(req, res) => {
         try{
             const order = await Order.find()
@@ -21,7 +22,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
-
+    // GET ALL Delivered Order
     getAllDeliveredOrder: async(req, res) => {
         try{
             const order = await Order.find()
@@ -31,7 +32,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
-
+    // GET ALL Cancelled Order
     getAllCancelledOrder: async(req, res) => {
         try{
             const order = await Order.find()
@@ -53,6 +54,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+    // Create Order
     addOrder: async(req, res) => {
         try {
             const {userID, totalPrice, createDate, discount, itemTotalPrice, shippingFee, status, items} = req.body;
@@ -65,7 +67,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
-
+    // Delete Order
     deleteOrder: async(req, res) => {
         const orderID = req.params.id;
         try{
@@ -76,6 +78,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+    // Update Order
     updateOrder: async(req, res) => {
         const orderID = req.params.id;
         try{
