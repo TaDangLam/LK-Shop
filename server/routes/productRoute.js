@@ -5,8 +5,10 @@ import productController from '../controllers/productController.js';
 
 Router.get('/', productController.getAllProduct);
 Router.post('/', productController.addProduct);
+
+Router.get('/search/:key', productController.searchProduct);
 Router.get('/:id', productController.getProductDetail);
-Router.put('/:id');
+Router.patch('/:id', productController.updateProduct);
 Router.delete('/:id', productController.deleteProduct);
 
 

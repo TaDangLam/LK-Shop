@@ -4,7 +4,7 @@ const orderStatusEnum = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cance
 
 const orderSchema = new mongoose.Schema({
     userID: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
     totalPrice: {
@@ -34,12 +34,12 @@ const orderSchema = new mongoose.Schema({
     },
     items: [
         {
-            product: {type: mongoose.Types.ObjectId, ref: 'Product'},
-            amount: {type: Number, require: true, min: 1}, 
+            product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
+            amount: {type: Number, required: true, min: 1}, 
         }
     ],
     paymentID: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Payment',
     },
 }, {

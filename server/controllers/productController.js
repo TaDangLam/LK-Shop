@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { Product } from '../model/productModel.js'
+import { Product } from '../model/productModel.js';
+
 
 const productController = {
     // GET ALL Product
@@ -50,12 +51,31 @@ const productController = {
     //Update Product
     updateProduct: async(req, res) => {
         const productID = req.params.id;
+        const { name, description, price, amount, images} = req.body;
         try {
-            
+            const productDoc = await Product.findByIdAndUpdate(productID, { name, description, price, amount, images}, {new: true});
+            res.status(StatusCodes.OK).json(productDoc);
         }catch(err) {
-            
+            console.log(err);
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
-    }
+    },
+
+    //Search Product
+    searchProduct: async(req, res) => {
+        const searchTemp = req.params.key;
+        try {
+            const productData = await Product.find({
+                $or: [
+                    {name: {$regex: searchTemp, $options: 'i'}},
+                    {description: {$regex: searchTemp, $options: 'i'}},
+                ],
+            });
+            res.status(StatusCodes.OK).json(productData);
+        }catch(err) {
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+        }
+    },
 }
 
 export default productController;

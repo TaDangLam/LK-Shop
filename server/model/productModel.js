@@ -19,7 +19,7 @@ const productSchema = new Schema({
         required: true,
     },
     categories: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
     },
     images: [
