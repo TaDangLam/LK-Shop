@@ -23,5 +23,6 @@ app.use(express.json())
 app.use('/api/product', API_Product),
 app.use('/api/category', API_Category);
 app.use('/api/blog', API_Blog);
+app.use('/api/user');
 
 app.listen(PORT, () => console.log(`Server listening http://localhost:${PORT}`));
