@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const productImgSchema = new mongoose.Schema({
-    // productID: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: '',
-    // },
+const productImageSchema = new mongoose.Schema({
+    productID: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Product',
+    },
     url: {
         type: String,
         required: true,
@@ -13,4 +13,4 @@ const productImgSchema = new mongoose.Schema({
     timestamps: true
 })
 
-export const ProductImage = mongoose.model('ProductImage', productImgSchema);
+export const ProductImage = mongoose.model('product_image', productImageSchema);

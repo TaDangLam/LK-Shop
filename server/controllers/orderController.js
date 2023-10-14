@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Order } from '../model/orderModel.js';
 
 const orderController = {
+    
     // GET ALL Order
     getAllOrder: async(req, res) => {
         try{
@@ -12,6 +13,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+    
     // GET ALL Shipped Order
     getAllShippedOrder: async(req, res) => {
         try{
@@ -22,6 +24,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+
     // GET ALL Delivered Order
     getAllDeliveredOrder: async(req, res) => {
         try{
@@ -32,11 +35,12 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+
     // GET ALL Cancelled Order
     getAllCancelledOrder: async(req, res) => {
         try{
             const order = await Order.find()
-                .where('status').equals("Canceled");
+                .where('status').equals("Cancelled");
             res.status(StatusCodes.OK).json(order);
         }catch(err){
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
@@ -54,10 +58,12 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+
     // Create Order
     addOrder: async(req, res) => {
         try {
             const {userID, totalPrice, createDate, discount, itemTotalPrice, shippingFee, status, items} = req.body;
+            console.log(req.body);
             const orderDoc = await Order.create({
                 userID, totalPrice, createDate, discount, itemTotalPrice, shippingFee, status, 
                 items: items || []
@@ -67,6 +73,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+
     // Delete Order
     deleteOrder: async(req, res) => {
         const orderID = req.params.id;
@@ -78,6 +85,7 @@ const orderController = {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
         }
     },
+
     // Update Order
     updateOrder: async(req, res) => {
         const orderID = req.params.id;
