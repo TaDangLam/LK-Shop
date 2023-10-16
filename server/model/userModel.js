@@ -1,28 +1,20 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const userEnum = ['admin', 'staff', 'customer'];
 
 const userSchema = new mongoose.Schema ({
     name: {
-        type: String, 
-        required: true,
-        minlength: 10,
-        maxlength: 20,
+        type: String
     },
     email: {
         type: String,
-        minlength: 10,
-        maxlength: 20,
     },
     birth: {
-        type: Date,
-        required: false,
+        type: Date
     },
     username: {
         type: String,
         required: true,
-        minlength: 10,
-        maxlength: 20,
     },
     password: {
         type: String,
@@ -35,9 +27,8 @@ const userSchema = new mongoose.Schema ({
         default: 'customer',
     },
     phone: {
-        type: String,
-        required: true,
-    }
+        type: String
+    }   
 }, {
     timestamps: true
 })

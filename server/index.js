@@ -7,6 +7,7 @@ import MongoConnect from './lib/mongodb.js';
 import { API_Product } from './routes/productRoute.js';
 import { API_Category } from './routes/categoryRoute.js';
 import { API_Blog } from './routes/blogRoute.js';
+import { API_User } from './routes/userRoute.js';
 
 
 dotenv.config()
@@ -23,6 +24,6 @@ app.use(express.json())
 app.use('/api/product', API_Product),
 app.use('/api/category', API_Category);
 app.use('/api/blog', API_Blog);
-app.use('/api/user');
+app.use('/api/user', API_User);
 
 app.listen(PORT, () => console.log(`Server listening http://localhost:${PORT}`));
